@@ -15,7 +15,22 @@ import SuperAlignment as sa
 xxx
 ```
 
-### AI Services Reviews and Ratings: <br>
+## Awesome SuperAlignment Paper List
+### Awesome Weak-to-Strong Generalization Paper List
+
+|  PAPER  | URL  |
+|  ----  | ----  |
+| WEAK-TO-STRONG GENERALIZATION: ELICITING STRONG CAPABILITIES WITH WEAK SUPERVISION | https://cdn.openai.com/papers/weak-to-strong-generalization.pdf |
+| Strong and weak alignment of large language models with human values | https://arxiv.org/pdf/2408.04655 |
+| SUPER(FICIAL)-ALIGNMENT: STRONG MODELS MAY DECEIVE WEAK MODELS IN WEAK-TO-STRONG GENERALIZATION | https://arxiv.org/pdf/2406.11431 |
+| SELF-PLAY WITH EXECUTION FEEDBACK: IMPROVING INSTRUCTION-FOLLOWING CAPABILITIES OF LARGE LANGUAGE MODELS | https://arxiv.org/pdf/2406.13542 |
+| Quantifying the Gain in Weak-to-Strong Generalization | https://arxiv.org/abs/2405.15116 |
+
+
+
+
+
+## AI Services Reviews and Ratings: <br>
 [OpenAI o1 Reviews](http://www.deepnlp.org/store/pub/pub-openai-o1) <br>
 [ChatGPT User Reviews](http://www.deepnlp.org/store/pub/pub-chatgpt-openai) <br>
 [Gemini User Reviews](http://www.deepnlp.org/store/pub/pub-gemini-google) <br>
@@ -32,6 +47,9 @@ xxx
 [Doubao Reviews](http://www.deepnlp.org/store/pub/pub-doubao-douyin) <br>
 [Coursera Reviews](http://www.deepnlp.org/store/pub/pub-coursera) <br>
 [Udacity Reviews](http://www.deepnlp.org/store/pub/pub-udacity) <br>
+
+## AI Services in Industry
+[Robotaxi User Review](http://www.deepnlp.org/store/robotaxi) <br>
 
 
 ### Related Blogs: <br>
