@@ -48,9 +48,11 @@ xxx
 [Coursera Reviews](http://www.deepnlp.org/store/pub/pub-coursera) <br>
 [Udacity Reviews](http://www.deepnlp.org/store/pub/pub-udacity) <br>
 
-## AI Services in Industry
+## AI Robots Industry User Reviews
 [Robotaxi User Review](http://www.deepnlp.org/store/robotaxi) <br>
-
+[Quadruped robot reviews](http://www.deepnlp.org/store/humanoid-robot) <br>
+[Humanoid Robot Reviews](http://www.deepnlp.org/store/humanoid-robot) <br>
+[Embodied AI Reviews](http://www.deepnlp.org/store/embodied-ai) <br>
 
 ### Related Blogs: <br>
 [Open AI Weak to Strong Generalization](https://openai.com/index/weak-to-strong-generalization/) <br>
