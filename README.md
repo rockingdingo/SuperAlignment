@@ -5,18 +5,89 @@ This is the official github repo of pypi package SuperAlignment (https://pypi.or
 Motivated by OpenAI's alignment paper "WEAK-TO-STRONG GENERALIZATION: ELICITING STRONG CAPABILITIES WITH WEAK SUPERVISION"(https://openai.com/index/weak-to-strong-generalization/), we feel that it's a very interesting direction to define some common interface to train/eval superalignment models in this new area. Right now it has just started from scratch and you are very welcome to contact us if you have any cool ideas that would like to participate and collabratively commit to this repo. 
 
 
+
 ```
 pip install SuperAlignment
 ```
 
-
 ```
 import SuperAlignment as sa
-xxx
+
+input_dict = {"text": "SuperAlignment"}
+
+res = sa.api(input_dict, model=None, api_name="ArxivPaperAPI", start=0, max_results = 3)
+paper_list = json.loads(res["text"])
+print ("###### Text to Image Recent Paper List:")
+for (i, paper_json) in enumerate(paper_list):
+    print ("### PAPER %d" % (i+1))
+    print (paper_json)
+
+
 ```
 
-## Awesome SuperAlignment Paper List
-### Awesome Weak-to-Strong Generalization Paper List
+### Common Interface of SuperAlignment Application
+
+```
+
+class YourSuperAlignmentAPI(BaseAPI):
+    """docstring for ClassName"""
+    def __init__(self, configs):
+        super(YourSuperAlignmentAPI, self).__init__(configs)
+        self.name = "xxxxx"
+
+    def api(self, input_dict, model, kwargs):
+        """
+            Args:
+                input_dict: dict, multi-modal input text, image, audio and video
+                model: huggingface model of tf or pytoch
+                kwargs: key-value args
+            Return:
+                res_dict: dict, multi-modal text text, image, audio and video
+        """
+        res_dict={}
+        try:
+            input_text = input_dict["text"]   # str
+            input_image = input_dict["image"] # image path
+            input_audio = input_dict["audio"] # audio path
+            input_video = input_dict["video"] # video path
+
+            res_dict["text"] = None
+            res_dict["image"] = None
+            res_dict["audio"] = None
+            res_dict["video"] = None
+        except Exception as e:
+            print (e)
+        return res_dict
+
+
+```
+
+### SuperAlignment Losses
+
+
+```
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+def auxConfidentLoss(alpha, t, x_weak, x_strong):
+    """
+        AUXILIARY CONFIDENCE LOSS as in weak to strong generalization paper
+    """
+    ce_loss = nn.CrossEntropyLoss()
+    x_strong_ind = torch.relu(x_strong - t)
+    aux_loss = alpha * ce_loss(x_strong, x_weak) + (1-alpha) * ce_loss(x_strong, x_strong_ind)
+    return aux_loss
+
+
+```
+
+
+
+
+### Awesome SuperAlignment Papers and Projects
+
+#### 2024 SuperAlignment Paper
 
 |  PAPER  | URL  |
 |  ----  | ----  |
@@ -25,12 +96,13 @@ xxx
 | SUPER(FICIAL)-ALIGNMENT: STRONG MODELS MAY DECEIVE WEAK MODELS IN WEAK-TO-STRONG GENERALIZATION | https://arxiv.org/pdf/2406.11431 |
 | SELF-PLAY WITH EXECUTION FEEDBACK: IMPROVING INSTRUCTION-FOLLOWING CAPABILITIES OF LARGE LANGUAGE MODELS | https://arxiv.org/pdf/2406.13542 |
 | Quantifying the Gain in Weak-to-Strong Generalization | https://arxiv.org/abs/2405.15116 |
+| A Superalignment Framework in Autonomous Driving with Large Language Models | https://arxiv.org/abs/2406.05651 |
+| A Moral Imperative: The Need for Continual Superalignment of Large Language Models | https://arxiv.org/abs/2403.14683 |
+| Vision Superalignment: Weak-to-Strong Generalization for Vision Foundation Models | https://arxiv.org/abs/2402.03749 |
+| Improving Weak-to-Strong Generalization with Scalable Oversight and Ensemble Learning | https://arxiv.org/abs/2402.00667 |
 
 
-
-
-
-## AI Services Reviews and Ratings: <br>
+### AI Services Reviews and Ratings <br>
 ##### Chatbot
 [OpenAI o1 Reviews](http://www.deepnlp.org/store/pub/pub-openai-o1) <br>
 [ChatGPT User Reviews](http://www.deepnlp.org/store/pub/pub-chatgpt-openai) <br>
@@ -84,20 +156,12 @@ xxx
 [Baidu Apollo Reviews](http://www.deepnlp.org/store/pub/pub-baidu-apollo) <br>
 [Hyundai IONIQ 6](http://www.deepnlp.org/store/pub/pub-hyundai-ioniq-6) <br>
 
-## AI Robots Industry User Reviews
-[Robotaxi User Review](http://www.deepnlp.org/store/robotaxi) <br>
-[Quadruped robot reviews](http://www.deepnlp.org/store/humanoid-robot) <br>
-[Humanoid Robot Reviews](http://www.deepnlp.org/store/humanoid-robot) <br>
-[Embodied AI Reviews](http://www.deepnlp.org/store/embodied-ai) <br>
 
-### Related Blogs: <br>
+### Related Blogs <br>
 [Open AI Weak to Strong Generalization](https://openai.com/index/weak-to-strong-generalization/) <br>
-[What's the probability of a group of Artificial Intelligence to reach a consensus to harm humans](http://www.deepnlp.org/blog/agi-asi-what-is-the-probability-of-a-group-of-artificial-intelligence-to-reach-a-consensus-to-harm-humans) <br>
-[What are the Worst Most Scary or Creepiest AI Generated Image you have ever seen?](http://www.deepnlp.org/blog/what-are-the-worst-most-scary-or-creepiest-ai-generated-image-you-have-ever-seen) <br>
 [Introduction to multimodal generative models](http://www.deepnlp.org/blog/introduction-to-multimodal-generative-models) <br>
 [Generative AI Search Engine Optimization](http://www.deepnlp.org/blog/generative-ai-search-engine-optimization-how-to-improve-your-content) <br>
 [AI Image Generator User Reviews](http://www.deepnlp.org/store/image-generator) <br>
 [AI Video Generator User Reviews](http://www.deepnlp.org/store/video-generator) <br>
 [AI Chatbot & Assistant Reviews](http://www.deepnlp.org/store/chatbot-assistant) <br>
 [Best AI Tools User Reviews](http://www.deepnlp.org/store/pub/) <br>
-
